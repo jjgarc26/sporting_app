@@ -11,9 +11,9 @@ def hello_world():
 @app.route('/login', methods=['POST','GET'])
 def login():
     if request.method == 'POST':
-        # verify_user(request.form)
-        return request.form
+        data = request.get_json()
+        verification = verify_user(data)
     else:
         pass
-    # return 'success'
+    return verification
 
