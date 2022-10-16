@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import send_request from "../apis";
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -11,13 +11,14 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const verifyUser = () => {
+  const verifyUser = async () => {
     const userInformation = {
       userName: userName,
       passWord: password,
     };
-    const userInformationJSON = JSON.parse(userInformation);
     console.log("send request");
+    const request = await send_request(userInformation);
+    console.log(request);
     console.log(password);
     console.log(userName);
   };
