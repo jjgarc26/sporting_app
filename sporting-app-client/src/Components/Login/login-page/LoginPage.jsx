@@ -17,7 +17,7 @@ const LoginPage = () => {
       passWord: password,
     };
     console.log("send request");
-    const request = await send_request(userInformation);
+    const request = await send_request(userInformation.userName);
     console.log(request);
     console.log(password);
     console.log(userName);
