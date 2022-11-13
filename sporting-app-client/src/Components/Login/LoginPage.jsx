@@ -1,5 +1,6 @@
 import { useState } from "react";
-import send_request from "../apis";
+import verifyUser from "../../apis/databaseApi";
+import Card from "../../UI/Card";
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -11,20 +12,20 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const verifyUser = async () => {
+  const verify = async () => {
     const userInformation = {
       userName: userName,
       passWord: password,
     };
     console.log("send request");
-    const request = await send_request(userInformation.userName);
+    const request = await verifyUser(userInformation.userName);
     console.log(request);
     console.log(password);
     console.log(userName);
   };
 
   return (
-    <div>
+    <Card>
       <div>
         <label>Username</label>
         <input
@@ -44,9 +45,9 @@ const LoginPage = () => {
         />
       </div>
       <div>
-        <button onClick={verifyUser}>Login</button>
+        <button onClick={verify}>Login</button>
       </div>
-    </div>
+    </Card>
   );
 };
 

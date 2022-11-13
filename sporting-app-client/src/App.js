@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-import LoginPage from "./Components/Login/login-page/LoginPage";
+import LoginPage from "./Components/Login/LoginPage";
 import CreateUser from "./Components/CreateUser/CreateUser";
+import Card from "./UI/Card";
 
 function App() {
   const [screen, setScreen] = useState("welcome");
 
   const WelcomePage = () => {
     return (
-      <div>
+      <Card>
         <div>
           <h1>Welcome</h1>
         </div>
@@ -30,7 +31,7 @@ function App() {
             Create User
           </button>
         </div>
-      </div>
+      </Card>
     );
   };
 
