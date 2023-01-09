@@ -3,11 +3,15 @@ import CreateUserForm from "./CreateUserForm";
 import newUser from "../../apis/databaseApi";
 
 const CreateUser = () => {
+  const postUserInfoRequest = async (request) => {
+    let response = await newUser(request);
+  };
+
   return (
     <Card>
       <h1>Create Account</h1>
       <h3>Basic Information</h3>
-      <CreateUserForm />
+      <CreateUserForm postRequest={postUserInfoRequest} />
 
       <h3>Create username and password</h3>
 

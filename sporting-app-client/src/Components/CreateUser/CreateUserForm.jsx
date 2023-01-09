@@ -2,103 +2,127 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 let defaultValue = {
-  first_name: "",
-  middle_name: "",
-  last_name: "",
+  firstName: "",
+  middleName: "",
+  lastName: "",
   gender: "",
   email: "",
-  date_of_birth: "",
-  user_id: "",
+  dateOfBirth: "",
+  userId: "",
   password: "",
 };
 
-const CreateUserForm = () => {
+const CreateUserForm = (props) => {
   const [userInfo, setUserInfo] = useState(defaultValue);
+  const [logginForm, setLogginForm] = useState(false);
+
   const userInfoHandler = (event) => {
     const { id: name, value } = event.currentTarget;
-    setUserInfo((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
+    switch (name) {
+      case "confirmPassword":
+        return value === userInfo.password
+          ? console.log("does match")
+          : console.log("does not match");
+      case "password":
+        value === userInfo.password
+          ? console.log("does match")
+          : console.log("does not match");
+        setUserInfo((prevState) => {
+          return {
+            ...prevState,
+            [name]: value,
+          };
+        });
+      default:
+        setUserInfo((prevState) => {
+          return {
+            ...prevState,
+            [name]: value,
+          };
+        });
+    }
   };
+
+  function formSection(labelName, type, id, placeholder) {
+    return (
+      <div>
+        <label>{labelName}</label>
+        <input
+          type={type}
+          id={id}
+          placeholder={placeholder}
+          onChange={userInfoHandler}
+        />
+      </div>
+    );
+  }
 
   useEffect(() => {
     // Use to check if changes are applied
     console.log(userInfo);
   }, [userInfo]);
 
-  let basicInfoForm = () => {
-    <form>
-      <label>First name</label>
-      <input
-        type="text"
-        id="first_name"
-        placeholder="joe"
-        onChange={userInfoHandler}
-      />
-      <label>Middle name</label>
-      <input
-        type="text"
-        id="middle_name"
-        placeholder="deer"
-        onChange={userInfoHandler}
-      />
-      <label>Last Name</label>
-      <input
-        type="text"
-        id="last_name"
-        placeholder="doe"
-        onChange={userInfoHandler}
-      />
-      <br />
-      <label>Email</label>
-      <input
-        type="email"
-        id="email"
-        placeholder="example@email.com"
-        onChange={userInfoHandler}
-      />
-      <br />
-      <label>Phone</label>
-      <input
-        type="number"
-        id="phone"
-        placeholder="888-888-8888"
-        onChange={userInfoHandler}
-      />
-      <br />
-      <label>Gender</label>
-      <input
-        type="text"
-        id="gender"
-        placeholder="male"
-        onChange={userInfoHandler}
-      />
-      <br />
-      <button>Continue</button>
-    </form>;
-  };
+  function userInformationForm() {
+    return (
+      <form>
+        {formSection("First Name", "text", "first_name", "joe")}
+        <br />
+        {formSection("Middle Name", "text", "middle_name", "deer")}
+        <br />
+        {formSection("Last Name", "text", "last_name", "doe")}
+        <br />
+        {formSection("Email", "email", "email", "example@email.com")}
+        <br />
+        {formSection("Phone", "number", "phone", "888-888-8888")}
+        <br />
+        {formSection("Gender", "text", "gender", "male")}
+        <br />
+        <button
+          onClick={() => {
+            setLogginForm(true);
+          }}
+        >
+          Continue
+        </button>
+      </form>
+    );
+  }
 
-  let userLogginForm = () => {
-    <form>
-      <label>User Name</label>
-      <input type="text" id="user_id" placeholder="username" />
-      <br />
-      <label>Password</label>
-      <input type="password" id="user_id" placeholder="password" />
-      <label>Confirm password</label>
-      <input type="password" id="password" placeholder="password" />
-      <br />
-      <button>Submit</button>
-    </form>;
-  };
+  function userLogginInformationForm() {
+    return (
+      <form>
+        {formSection("User Name", "text", "userId", "username")}
+        <br />
+        {formSection("Password", "password", "password", "password")}
+        <br />
+        {formSection(
+          "Confirm Password",
+          "password",
+          "confirmPassword",
+          "password"
+        )}
+        <br />
+        <button
+          onClick={() => {
+            props.postRequest(userInfo);
+          }}
+        >
+          Submit
+        </button>
+        <button
+          onClick={() => {
+            setLogginForm(false);
+          }}
+        >
+          Back
+        </button>
+      </form>
+    );
+  }
 
   return (
     <div>
-      {basicInfoForm}
-      {userLogginForm}
+      {!logginForm ? userInformationForm() : userLogginInformationForm()}
     </div>
   );
 };
