@@ -1,6 +1,6 @@
 import Card from "../../UI/Card";
 import CreateUserForm from "./CreateUserForm";
-import newUser from "../../apis/databaseApi";
+import newUser from "../../apis/newUserApi";
 
 const CreateUser = () => {
   const postUserInfoRequest = async (request) => {

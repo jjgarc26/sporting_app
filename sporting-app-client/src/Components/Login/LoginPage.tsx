@@ -1,28 +1,26 @@
 import { useState } from "react";
-import verifyUser from "../../apis/databaseApi";
+import verifyUser from "../../apis/verifyUserApi";
 import Card from "../../UI/Card";
+import { UserData, ReactChangeEventType } from "../../utils/types";
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const userNameHandler = (event) => {
+  const userNameHandler = (event: ReactChangeEventType) => {
     setUserName(event.target.value);
   };
-  const passwordHandler = (event) => {
+  const passwordHandler = (event: ReactChangeEventType) => {
     setPassword(event.target.value);
   };
 
-  const verify = async () => {
-    const userInformation = {
+  async function verify(): Promise<void> {
+    const userInformation: UserData = {
       userName: userName,
-      passWord: password,
+      password: password,
     };
-    console.log("send request");
     const request = await verifyUser(userInformation.userName);
-    console.log(request);
-    console.log(password);
-    console.log(userName);
-  };
+    // return "";
+  }
 
   return (
     <Card>
