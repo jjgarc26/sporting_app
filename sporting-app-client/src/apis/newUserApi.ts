@@ -5,6 +5,7 @@ import { UserData } from "../utils/types";
  * @param user_data object with user information
  * @returns JSON object with response
  */
+
 export default async function newUser(
   user_data: UserData
 ): Promise<object | string> {
@@ -19,7 +20,7 @@ export default async function newUser(
     });
     const data = await response.json();
 
-    if (data == "success") {
+    if (data === "success") {
       return data;
     } else {
       return "Could not create user";

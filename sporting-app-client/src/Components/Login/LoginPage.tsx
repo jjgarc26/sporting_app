@@ -2,6 +2,7 @@ import { useState } from "react";
 import verifyUser from "../../apis/verifyUserApi";
 import Card from "../../UI/Card";
 import { UserData, ReactChangeEventType } from "../../utils/types";
+
 const LoginPage = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");

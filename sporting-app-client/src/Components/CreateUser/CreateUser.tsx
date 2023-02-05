@@ -1,11 +1,12 @@
 import Card from "../../UI/Card";
 import CreateUserForm from "./CreateUserForm";
 import newUser from "../../apis/newUserApi";
+import { UserData } from "../../utils/types";
 
 const CreateUser = () => {
-  const postUserInfoRequest = async (request) => {
+  async function postUserInfoRequest(request: UserData): Promise<void> {
     let response = await newUser(request);
-  };
+  }
 
   return (
     <Card>

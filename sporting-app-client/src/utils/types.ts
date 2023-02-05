@@ -4,3 +4,14 @@ export interface UserData {
 }
 
 export type ReactChangeEventType = React.ChangeEvent<HTMLInputElement>;
+
+export type elementData = {
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  dateOfBirth: string;
+  userId: string;
+  password: string;
+};

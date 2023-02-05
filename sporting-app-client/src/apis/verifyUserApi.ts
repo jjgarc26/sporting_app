@@ -22,7 +22,7 @@ export default async function verifyUser(
       },
     });
     const data = await response.json();
-    if (data == "user is not verified") {
+    if (data === "user is not verified") {
       return "error has occured";
     } else {
       return data;
