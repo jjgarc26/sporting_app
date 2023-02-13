@@ -35,21 +35,10 @@ function App() {
     );
   };
 
-  const pageHandler = () => {
-    if (screen === "login") {
-      return (
-        <div>
-          <LoginPage />
-        </div>
-      );
-    } else if (screen === "createUser") {
-      return (
-        <div>
-          <CreateUser />
-        </div>
-      );
-    }
-  };
+  function pageHandler() {
+    const currentPage = screen === "login" ? <LoginPage /> : <CreateUser />;
+    return <div>{currentPage}</div>;
+  }
 
   return <div>{screen === "welcome" ? WelcomePage() : pageHandler()}</div>;
 }

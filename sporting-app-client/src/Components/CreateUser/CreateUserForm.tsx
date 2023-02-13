@@ -8,6 +8,7 @@ let defaultValue: elementData = {
   middleName: "",
   lastName: "",
   gender: "",
+  phone: "",
   email: "",
   dateOfBirth: "",
   userId: "",
@@ -16,7 +17,7 @@ let defaultValue: elementData = {
 
 const CreateUserForm = (props: any) => {
   const [userInfo, setUserInfo] = useState(defaultValue);
-  const [logginForm, setLogginForm] = useState(false);
+  const [logginForm, setLogginForm] = useState("basic");
 
   const userInfoHandler = (event: ReactChangeEventType) => {
     const { id: name, value } = event.currentTarget;
@@ -51,6 +52,19 @@ const CreateUserForm = (props: any) => {
     // Use to check if changes are applied
     console.log(userInfo);
   }, [userInfo]);
+
+  function verifyUserInfoHandler(): void {
+    if (userInfo["firstName"] === "") {
+      console.log("Missing first name field");
+    } else if (userInfo["lastName"] === "") {
+      console.log("Missing last name field");
+    } else if (userInfo["email"] === "") {
+      console.log("Missing email field");
+    } else {
+      setLogginForm("loggin");
+    }
+    console.log(logginForm);
+  }
 
   function userInformationForm() {
     return (
@@ -107,10 +121,10 @@ const CreateUserForm = (props: any) => {
         <br />
         <button
           onClick={() => {
-            setLogginForm(true);
+            console.log("click");
           }}
         >
-          Continue
+          Next
         </button>
       </form>
     );
@@ -157,7 +171,7 @@ const CreateUserForm = (props: any) => {
         </button>
         <button
           onClick={() => {
-            setLogginForm(false);
+            setLogginForm("bass");
           }}
         >
           Back
@@ -168,7 +182,9 @@ const CreateUserForm = (props: any) => {
 
   return (
     <div>
-      {!logginForm ? userInformationForm() : userLogginInformationForm()}
+      {logginForm === "basic"
+        ? userInformationForm()
+        : userLogginInformationForm()}
     </div>
   );
 };
