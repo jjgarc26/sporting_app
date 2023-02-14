@@ -53,13 +53,16 @@ const CreateUserForm = (props: any) => {
     console.log(userInfo);
   }, [userInfo]);
 
-  function verifyUserInfoHandler(): void {
+  function verifyUserInfoHandler(e: React.MouseEvent): void {
     if (userInfo["firstName"] === "") {
       console.log("Missing first name field");
+      e.preventDefault();
     } else if (userInfo["lastName"] === "") {
       console.log("Missing last name field");
+      e.preventDefault();
     } else if (userInfo["email"] === "") {
       console.log("Missing email field");
+      e.preventDefault();
     } else {
       setLogginForm("loggin");
     }
@@ -73,7 +76,7 @@ const CreateUserForm = (props: any) => {
           inputInfo={{
             label: "First Name",
             type: "text",
-            id: "first_name",
+            id: "firstName",
             placeholder: "John",
           }}
           onChange={userInfoHandler}
@@ -83,7 +86,7 @@ const CreateUserForm = (props: any) => {
           inputInfo={{
             label: "Last Name",
             type: "text",
-            id: "last_name",
+            id: "lastName",
             placeholder: "Doe",
           }}
           onChange={userInfoHandler}
@@ -119,13 +122,7 @@ const CreateUserForm = (props: any) => {
           onChange={userInfoHandler}
         />
         <br />
-        <button
-          onClick={() => {
-            console.log("click");
-          }}
-        >
-          Next
-        </button>
+        <button onClick={verifyUserInfoHandler}>Next</button>
       </form>
     );
   }
