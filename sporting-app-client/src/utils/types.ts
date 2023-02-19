@@ -10,7 +10,6 @@ export type elementData = {
   middleName: string;
   lastName: string;
   gender: string;
-  phone: string;
   email: string;
   dateOfBirth: string;
   userId: string;

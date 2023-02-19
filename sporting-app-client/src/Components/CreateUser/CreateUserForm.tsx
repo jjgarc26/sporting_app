@@ -8,7 +8,6 @@ let defaultValue: elementData = {
   middleName: "",
   lastName: "",
   gender: "",
-  phone: "",
   email: "",
   dateOfBirth: "",
   userId: "",
@@ -55,6 +54,7 @@ const CreateUserForm = (props: any) => {
 
   function verifyUserInfoHandler(e: React.MouseEvent): void {
     if (userInfo["firstName"] === "") {
+      alert("Missing first name");
       console.log("Missing first name field");
       e.preventDefault();
     } else if (userInfo["lastName"] === "") {
@@ -104,10 +104,10 @@ const CreateUserForm = (props: any) => {
         <br />
         <InputComponent
           inputInfo={{
-            label: "Phone",
-            type: "number",
-            id: "phone",
-            placeholder: "888-888-8888",
+            label: "Date of Birth",
+            type: "date",
+            id: "dateOfBirth",
+            placeholder: "1999-01-1",
           }}
           onChange={userInfoHandler}
         />
@@ -134,7 +134,7 @@ const CreateUserForm = (props: any) => {
           inputInfo={{
             label: "UserName",
             type: "text",
-            id: "user_id",
+            id: "userId",
             placeholder: "username",
           }}
           onChange={userInfoHandler}

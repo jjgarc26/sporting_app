@@ -2,12 +2,12 @@ import { UserData } from "../utils/types";
 
 /**
  * Creates new user in db
- * @param user_data object with user information
+ * @param userData object with user information
  * @returns JSON object with response
  */
 
 export default async function newUser(
-  user_data: UserData
+  userData: UserData
 ): Promise<object | string> {
   try {
     const response = await fetch("http://127.0.0.1:5000/create_account", {
@@ -16,7 +16,7 @@ export default async function newUser(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(user_data),
+      body: JSON.stringify(userData),
     });
     const data = await response.json();
 
@@ -27,6 +27,5 @@ export default async function newUser(
     }
   } catch (error) {
     throw error;
-    // return `${error}`;
   }
 }
