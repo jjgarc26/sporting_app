@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { elementData, ReactChangeEventType } from "../../utils/types";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import InputComponent from "../Shared/InputComponent";
 
 let defaultValue: elementData = {
@@ -71,109 +73,113 @@ const CreateUserForm = (props: any) => {
 
   function userInformationForm() {
     return (
-      <form>
-        <InputComponent
-          inputInfo={{
-            label: "First Name",
-            type: "text",
-            id: "firstName",
-            placeholder: "John",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <InputComponent
-          inputInfo={{
-            label: "Last Name",
-            type: "text",
-            id: "lastName",
-            placeholder: "Doe",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <InputComponent
-          inputInfo={{
-            label: "Email",
-            type: "email",
-            id: "email",
-            placeholder: "example@email.com",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <InputComponent
-          inputInfo={{
-            label: "Date of Birth",
-            type: "date",
-            id: "dateOfBirth",
-            placeholder: "1999-01-1",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <InputComponent
-          inputInfo={{
-            label: "Gender",
-            type: "text",
-            id: "gender",
-            placeholder: "male/female",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <button onClick={verifyUserInfoHandler}>Next</button>
-      </form>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <InputComponent
+            inputInfo={{
+              label: "First Name",
+              type: "text",
+              id: "firstName",
+              placeholder: "John",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <InputComponent
+            inputInfo={{
+              label: "Last Name",
+              type: "text",
+              id: "lastName",
+              placeholder: "Doe",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <InputComponent
+            inputInfo={{
+              label: "Email",
+              type: "email",
+              id: "email",
+              placeholder: "example@email.com",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <InputComponent
+            inputInfo={{
+              label: "Date of Birth",
+              type: "date",
+              id: "dateOfBirth",
+              placeholder: "1999-01-1",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <InputComponent
+            inputInfo={{
+              label: "Gender",
+              type: "text",
+              id: "gender",
+              placeholder: "male/female",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <Button onClick={verifyUserInfoHandler}>Next</Button>
+        </Form.Group>
+      </Form>
     );
   }
 
   function userLogginInformationForm() {
     return (
-      <form>
-        <InputComponent
-          inputInfo={{
-            label: "UserName",
-            type: "text",
-            id: "userId",
-            placeholder: "username",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <InputComponent
-          inputInfo={{
-            label: "Password",
-            type: "password",
-            id: "password",
-            placeholder: "password",
-          }}
-          onChange={userInfoHandler}
-        />
-        <InputComponent
-          inputInfo={{
-            label: "Confirm Password",
-            type: "password",
-            id: "confirmPassword",
-            placeholder: "password",
-          }}
-          onChange={userInfoHandler}
-        />
-        <br />
-        <button
-          onClick={() => {
-            props.postRequest(userInfo);
-          }}
-        >
-          Submit
-        </button>
-        <button
-          onClick={() => {
-            setLogginForm("bass");
-          }}
-        >
-          Back
-        </button>
-      </form>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <InputComponent
+            inputInfo={{
+              label: "UserName",
+              type: "text",
+              id: "userId",
+              placeholder: "username",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <InputComponent
+            inputInfo={{
+              label: "Password",
+              type: "password",
+              id: "password",
+              placeholder: "password",
+            }}
+            onChange={userInfoHandler}
+          />
+          <InputComponent
+            inputInfo={{
+              label: "Confirm Password",
+              type: "password",
+              id: "confirmPassword",
+              placeholder: "password",
+            }}
+            onChange={userInfoHandler}
+          />
+          <br />
+          <Button
+            onClick={() => {
+              props.postRequest(userInfo);
+            }}
+          >
+            Submit
+          </Button>
+          <Button
+            onClick={() => {
+              setLogginForm("bass");
+            }}
+          >
+            Back
+          </Button>
+        </Form.Group>
+      </Form>
     );
   }
 

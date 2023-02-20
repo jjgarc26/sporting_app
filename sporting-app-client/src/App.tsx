@@ -2,36 +2,46 @@ import { useState } from "react";
 
 import LoginPage from "./Components/Login/LoginPage";
 import CreateUser from "./Components/CreateUser/CreateUser";
-import Card from "./UI/Card";
+//import Card from "./UI/Card";
+import { Card } from "react-bootstrap";
+import Container from "react-bootstrap/esm/Container";
+import Button from "react-bootstrap/esm/Button";
+import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
 
 function App() {
   const [screen, setScreen] = useState("welcome");
 
   const WelcomePage = () => {
     return (
-      <Card>
-        <div>
-          <h1>Welcome</h1>
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              setScreen("login");
-            }}
-          >
-            Login
-          </button>
-        </div>
-        <div>
-          <button
-            onClick={() => {
-              setScreen("createUser");
-            }}
-          >
-            Create User
-          </button>
-        </div>
-      </Card>
+      <Container>
+        <Card>
+          <Card.Body>
+            <Card.Title>
+              <h1>Welcome</h1>
+            </Card.Title>
+            <ButtonGroup className="me-2">
+              <Button
+                onClick={() => {
+                  setScreen("login");
+                }}
+                variant="primary"
+              >
+                Login
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button
+                onClick={() => {
+                  setScreen("createUser");
+                }}
+                variant="primary"
+              >
+                Create User
+              </Button>
+            </ButtonGroup>
+          </Card.Body>
+        </Card>
+      </Container>
     );
   };
 

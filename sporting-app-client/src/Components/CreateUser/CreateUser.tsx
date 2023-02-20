@@ -1,9 +1,11 @@
-import Card from "../../UI/Card";
+//import Card from "../../UI/Card";
+import { Card } from "react-bootstrap";
 import CreateUserForm from "./CreateUserForm";
 import newUser from "../../apis/newUserApi";
 import { UserData } from "../../utils/types";
 import { useState } from "react";
 import UserCreatedPage from "./UserCreatedPage";
+import Container from "react-bootstrap/esm/Container";
 
 const CreateUser = () => {
   const [userWasCreated, setUserWasCreated] = useState(false);
@@ -24,7 +26,15 @@ const CreateUser = () => {
     );
   }
 
-  return <Card>{!userWasCreated ? formPage() : <UserCreatedPage />}</Card>;
+  return (
+    <Container>
+      <Card>
+        <Card.Body>
+          {!userWasCreated ? formPage() : <UserCreatedPage />}
+        </Card.Body>
+      </Card>
+    </Container>
+  );
 };
 
 export default CreateUser;

@@ -1,8 +1,10 @@
+import Form from "react-bootstrap/Form";
+
 const InputComponent = (props: any) => {
   return (
     <div>
-      <label>{props.inputInfo["label"]}</label>
-      <input
+      <Form.Label>{props.inputInfo["label"]}</Form.Label>
+      <Form.Control
         type={props.inputInfo["type"]}
         id={props.inputInfo["id"]}
         placeholder={props.inputInfo["placeholder"]}
