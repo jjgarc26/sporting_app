@@ -1,56 +1,26 @@
-import { useState } from "react";
-
-import LoginPage from "./Components/Login/LoginPage";
-import CreateUser from "./Components/CreateUser/CreateUser";
-//import Card from "./UI/Card";
 import { Card } from "react-bootstrap";
-import Container from "react-bootstrap/esm/Container";
-import Button from "react-bootstrap/esm/Button";
-import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
+
+import { Route, RouterProvider, createRoutesFromElements } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
+import Homepage from "./Components/Homepage/HomePage";
+import RootLayout from "./Components/RootLayout/RootLayout";
+import CreateUser from "./Components/CreateUser/CreateUser";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route index element={<Homepage />} />
+      <Route path="/create_account" element={<CreateUser />} />
+    </Route>
+  )
+);
 
 function App() {
-  const [screen, setScreen] = useState("welcome");
-
-  const WelcomePage = () => {
-    return (
-      <Container>
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              <h1>Welcome</h1>
-            </Card.Title>
-            <ButtonGroup className="me-2">
-              <Button
-                onClick={() => {
-                  setScreen("login");
-                }}
-                variant="primary"
-              >
-                Login
-              </Button>
-            </ButtonGroup>
-            <ButtonGroup>
-              <Button
-                onClick={() => {
-                  setScreen("createUser");
-                }}
-                variant="primary"
-              >
-                Create User
-              </Button>
-            </ButtonGroup>
-          </Card.Body>
-        </Card>
-      </Container>
-    );
-  };
-
-  function pageHandler() {
-    const currentPage = screen === "login" ? <LoginPage /> : <CreateUser />;
-    return <div>{currentPage}</div>;
-  }
-
-  return <div>{screen === "welcome" ? WelcomePage() : pageHandler()}</div>;
+  return (
+    <Card>
+      <RouterProvider router={router} />
+    </Card>
+  );
 }
 
 export default App;
