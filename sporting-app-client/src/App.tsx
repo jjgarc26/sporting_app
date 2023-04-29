@@ -5,12 +5,14 @@ import { createBrowserRouter } from "react-router-dom";
 import Homepage from "./Components/Homepage/HomePage";
 import RootLayout from "./Components/RootLayout/RootLayout";
 import CreateUser from "./Components/CreateUser/CreateUser";
+import LoginPage from "./Components/Login/LoginPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Homepage />} />
       <Route path="/create_account" element={<CreateUser />} />
+      <Route path="/login" element={<LoginPage />} />
     </Route>
   )
 );
