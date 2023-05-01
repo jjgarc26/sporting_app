@@ -20,7 +20,7 @@ const CreateUser = () => {
   function formPage() {
     return (
       <div>
-        <h1>Create Account</h1>
+        <Card.Title className="text-center">Create Account</Card.Title>
         <CreateUserForm postRequest={postUserInfoRequest} />
       </div>
     );

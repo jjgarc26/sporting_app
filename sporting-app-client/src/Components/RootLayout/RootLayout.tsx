@@ -12,7 +12,6 @@ export default function RootLayout() {
           <Nav>
             <NavLink to="/login">Login</NavLink>
           </Nav>
-
           <NavLink to="/create_account">Create Account</NavLink>
         </Container>
       </Navbar>

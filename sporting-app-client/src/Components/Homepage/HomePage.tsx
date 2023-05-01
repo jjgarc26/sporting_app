@@ -9,7 +9,7 @@ function Homepage() {
   const navigate = useNavigate();
   return (
     <Container>
-      <Card>
+      <Card className="text-center">
         <Card.Body>
           <Card.Title>
             <h1>Welcome</h1>
