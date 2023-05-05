@@ -18,7 +18,6 @@ let defaultValue: elementData = {
 
 const CreateUserForm = (props: any) => {
   const [userInfo, setUserInfo] = useState(defaultValue);
-  const [logginForm, setLogginForm] = useState("basic");
 
   useEffect(() => {
     // Use to check if changes are applied
@@ -37,20 +36,15 @@ const CreateUserForm = (props: any) => {
   };
 
   function verifyUserInfoHandler(e: React.MouseEvent): void {
-    if (userInfo["firstName"] === "") {
-      alert("Missing first name");
-      console.log("Missing first name field");
-      e.preventDefault();
-    } else if (userInfo["lastName"] === "") {
-      console.log("Missing last name field");
-      e.preventDefault();
-    } else if (userInfo["email"] === "") {
-      console.log("Missing email field");
-      e.preventDefault();
-    } else {
-      setLogginForm("loggin");
-    }
-    console.log(logginForm);
+    Object.entries(userInfo).forEach((entry) => {
+      const entryName: string = entry[0];
+      const entryValue: string = entry[1];
+
+      if (entryValue === "" || entryValue === " ") {
+        alert(`${entryName} must be defined`);
+        e.preventDefault();
+      }
+    });
   }
 
   return (
