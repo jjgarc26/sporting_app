@@ -42,7 +42,7 @@ const LoginCredentialForm = () => {
   }
   return (
     <Form>
-      <Form.Group className="mb-3" controlId="loginCredForm">
+      <Form.Group className="mb-3">
         <InputComponent
           inputInfo={{
             label: "User Name",

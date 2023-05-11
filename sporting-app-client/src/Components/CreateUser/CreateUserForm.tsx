@@ -40,22 +40,40 @@ const CreateUserForm = (props: any) => {
       const entryName: string = entry[0];
       const entryValue: string = entry[1];
 
-      if (entryValue === "" || entryValue === " ") {
-        alert(`${entryName} must be defined`);
+      if (
+        entryName === "password" ||
+        entryName === "userId" ||
+        entryName === "middleName"
+      ) {
         e.preventDefault();
+      } else {
+        if (entryValue === "" || entryValue === " ") {
+          alert(`${entryName} must be defined`);
+          e.preventDefault();
+        }
       }
     });
   }
 
   return (
     <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3">
         <InputComponent
           inputInfo={{
             label: "First Name",
             type: "text",
             id: "firstName",
             placeholder: "John",
+          }}
+          onChange={updateUserInfo}
+        />
+        <br />
+        <InputComponent
+          inputInfo={{
+            label: "Middle Name",
+            type: "text",
+            id: "middleName",
+            placeholder: "David",
           }}
           onChange={updateUserInfo}
         />
