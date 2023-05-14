@@ -17,24 +17,6 @@ const CreateUser = () => {
       setUserWasCreated(true);
     }
   }
-  function formPage() {
-    return (
-      <div>
-        <Card.Title className="text-center">Create Account</Card.Title>
-        <CreateUserForm postRequest={postUserInfoRequest} />
-      </div>
-    );
-  }
-
-  return (
-    <Container>
-      <Card>
-        <Card.Body>
-          {!userWasCreated ? formPage() : <UserCreatedPage />}
-        </Card.Body>
-      </Card>
-    </Container>
-  );
 };
 
 export default CreateUser;

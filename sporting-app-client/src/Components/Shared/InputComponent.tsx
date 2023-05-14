@@ -9,6 +9,7 @@ const InputComponent = (props: any) => {
         id={props.inputInfo["id"]}
         placeholder={props.inputInfo["placeholder"]}
         onChange={props.onChange}
+        isInvalid={props.inputInfo["isInvalid"]}
       />
     </div>
   );
